@@ -40,7 +40,7 @@ def allow(Age):
        return f'You are not allowed to enter'
 ```
 
-
+----
 
 ## Q2: Identify a database management system (DBMS) commonly used in web applications (including Flask) and discuss the pros and cons of this database
 
@@ -53,6 +53,7 @@ PostgreSQL is very well regarded due to its long-standing history of being a pow
 
 These disadvantages do not keep it from being one of the most popular DBMS's availability as the power & flexibility of PostgreSQL is incredibly useful to developers. 
 
+----
 ## Q3: Discuss the implementation of Agile project management methodology
 
 An Agile workflow describes an approach to software development that allows for quick (read: agile) responses to changes in project scope, objective and requirements. Instead of having distinct sequential projects and phases Agile prefers work cycles that include customers, testers and evaluation/feedback at every phase.
@@ -61,71 +62,79 @@ Another benefit agile workflow gives is allowing the entire team to contribute a
 
 To implement an agile workflow you can follow the 6 steps no matter which methodology you wish to follow. Keep in mind the wording can change from user to user, but the ideas are similar.  
 
-----
-
 ### **1. Ideation:**
 
 The team should conceptualize the project, determine the product features needing to be developed and realize the minimum viable product. Tools such as user stories can be of assistance in this stage. This should output a business scope and product backlog.
-
-----
 
 ### **2. Planning:**
 
 Here sprint teams should be created & assigned tasks, with goals, timeframes and resources allocated. User stories can also be completed in this stage. 
 
-----
-
 ### **3. Iteration:**
 
 Sprint teams work on their first iteration of the project and product backlog is addressed. If it's not the first iteration, then customer / stakeholder feedback is taken into account in another sprint. 
-
-----
 
 ### **4. Release:**
 
 The current iteration is released to the customer, customer feedback can be obtained and the cycle is repeated until the final iteration is delivered meeting all stakeholder & customer requirements/expectations. 
 
-----
-
 ### **5. Production:**
 
 After all testing & documentation is complete, the product is now in the production phase. The Agile team oversees the successful launch and provides support where needed for its release. 
 
-----
 
 ### **6. Retirement:**
 
 The completion of the agile process is a successful product given to the customer. The Agile team then moves on to the next project/project development cycle. 
 
-----
 
 Within the umbrella Agile framework there are multiple approaches in methodology. The most common are: Scrum, Kanban, Extreme Programming (XP), Lean Development and Crystal. Scrum and Kanban used widely, and feature different approaches to the same framework, where scrum is usually more structures with regular sprints and a focus on learning loops to gain feedback and knowledge. Kanabn focuses on visualization of the work, usually through a Kanban board that focus on breakdowns of the project (usually in user stories) and focus on continuous improvement.
 
-### Q4: Provide an overview and description of a standard source control workflow
+----
 
+## Q4: Provide an overview and description of a standard source control workflow
 
-### Q5: Provide an overview and description of a standard software testing process (e.g. manual testing)
+Git has multiple workflow templates available for everyone to use or take inspiration from when creating their source control workflow; for example "Centralized workflow". It uses a central repository with a "main" branch where all changes are committed to.
 
+To use a centralized workflow developers clone the repositories, then edit and commit locally. These changes remain independent from the origin until the developer is ready to "push" the commits to the main branch. This is fine on it's own if only one person is working on the code at a time, however that usually isn't the case, which is where managing conflicts becomes important.
 
-### Q6: Discuss and analyse requirements related to information system security and how they relate to the project
+If your local commits do not match the central repository (i.e. there has been another commit since you cloned the repository) then Git will refuse to push your changes which will overwrite the central commits. You can however fetch these commits and add your changes along with the other changes merging your changes onto the online stream. This can be done with ```git pull --rebase origin main```.
 
+Git will transfer the local commits individually allowing you to resolve conflicts at every stage and create a 'cleaner' and easier history to navigate. If possible, it's best to have people working on seperate sections of code as this will prevent rebasing from generating conflicts. If there is, the individual needs to resolve the conflicts to finalize the push. 
 
-### Q7: Discuss common methods of protecting information and data and how you would apply them to the project
+This control workflow is great for teams of few members as each conflict will take time to resolve, and will esculate with the number of people working on it. There are other workflows designed for teams of larger numbers that reduce the work required, however are usually more complex.<sup>3<sup>
+ 
+----
 
+## Q5: Provide an overview and description of a standard software testing process (e.g. manual testing)
 
-### Q8: Research what your legal obligations are in relation to handling user data and how they can be met for the project
+----
 
+## Q6: Discuss and analyse requirements related to information system security and how they relate to the project
 
-### Q9: Describe the structural aspects of the relational database model. Your description should include information about the structure in which data is stored and how relations are represented in that structure.
+----
 
+## Q7: Discuss common methods of protecting information and data and how you would apply them to the project
 
-### Q10: Describe the integrity aspects of the relational database model. Your description should include information about the types of data integrity and how they can be enforced in a relational database.
+----
 
+## Q8: Research what your legal obligations are in relation to handling user data and how they can be met for the project
 
-### Q11: Describe the manipulative aspects of the relational database model. Your description should include information about the ways in which data is manipulated (added, removed, changed, and retrieved) in a relational database.
+----
 
+## Q9: Describe the structural aspects of the relational database model. Your description should include information about the structure in which data is stored and how relations are represented in that structure.
 
-### Q12: Conduct research into a web application (app) and answer the following parts:
+----
+
+## Q10: Describe the integrity aspects of the relational database model. Your description should include information about the types of data integrity and how they can be enforced in a relational database.
+
+----
+
+## Q11: Describe the manipulative aspects of the relational database model. Your description should include information about the ways in which data is manipulated (added, removed, changed, and retrieved) in a relational database.
+
+----
+
+## Q12: Conduct research into a web application (app) and answer the following parts:
   a. List and describe the software used by the app.
   b. Describe the hardware used to host the app.
   c. Describe the interaction of technologies within the app
@@ -134,7 +143,7 @@ Within the umbrella Agile framework there are multiple approaches in methodology
   f. Identify the relationships and associations between the entities you have identified in part (e)
   g. Design a schema using an Entity Relationship Diagram (ERD) appropriate for the database of this website (assuming a relational database model)
 
-
+----
 
 
 ----
@@ -142,4 +151,5 @@ Within the umbrella Agile framework there are multiple approaches in methodology
 # References
 
 (1) https://realpython.com/python-web-applications-with-flask-part-i/#what-we-are-building <br>
-(2) https://www.postgresql.org/about/
+(2) https://www.postgresql.org/about/ <br>
+(3) https://www.atlassian.com/git/tutorials/comparing-workflows <br>
