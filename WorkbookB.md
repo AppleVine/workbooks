@@ -25,7 +25,11 @@ bubbleSort(array)
 ```
 
 ----
-Bucket sort O
+Bucket sort O(n+k)
+
+Bucket sort is excellent when you have a (roughly) evenly distributed set of data to sort. In the first pass, all data entries are assigned into defined "buckets". For example, for the numbers 1-100, you may have buckets for intervals of 5, 10, 20, 25 etc depending on how many data entries you had. Then, each bucket is then individually sorted using another sorting algorithm, e.g. insertion sort, comparison sort or merge sort.
+
+For each data entry to this array it will increase 
 
 https://www.geeksforgeeks.org/bucket-sort-2/
 https://en.wikipedia.org/wiki/Bucket_sort
