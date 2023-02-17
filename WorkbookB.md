@@ -6,7 +6,7 @@
 
 Bubble sorting makes passes through an array and rearranging two elements at a time in order of significance (ascending/alphabetical order.) It will do this in ```n-1``` passes, where n is the length of the array and two entries at a time, and only sort them if they are out of order with eachother. Then, it moves up one index and does the same for index 2 & 3, and so forth until the second last index, again ```n-1``` times. 
 
-For each data entry to this array, it will increase the sorting time by (n-1)*(n-1) times, which makes the worst case condition O(n<sup>2</sup>). It can be optimized slightly to finish when entries are sorted, but the average to worst case conditions are still considered O(n<sup>2</sup>).
+For each data entry to this array, it will increase the sorting time by (n-1)*(n-1) times, which makes the worst case condition O(n<sup>2</sup>), due to the nested loops making it multiplicitive. It can be optimized slightly to finish when entries are sorted, but the average to worst case conditions are still considered O(n<sup>2</sup>).
 
 A coding example would look like below, where you can see the nested loops. The worst case scenario for this sorting method, is if they are all organized in descending order. This performance is considered quite poor and does substantially increase working time with large sets of data.
 
@@ -82,7 +82,7 @@ Similar to its variation **binary search**, Interpolation search will select the
 
 This makes it excellent for large sets of data as it will reduce the amount of splits needed each time, however it is much more complicated to program and understand than binary search, and can be slower than binary if the data set is not large, and not (relatively) uniform. 
 
-Used appropriately, binary search is O(logn) for time complexity, but the added efficiency in Interpolation makes it O(log log n). 
+Used appropriately, binary search is O(logn) for time complexity, but the added efficiency in Interpolation makes it O(log log n). Binary search is O(logn) as it needs one extra step every time the data is doubled (due halving the elements in every search). Interpolation takes this a step further by comparing that value to those at the upper and lower end, however this is again only accurate in well distributed data. 
 
 
 ## References

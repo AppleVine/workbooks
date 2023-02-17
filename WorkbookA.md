@@ -110,9 +110,38 @@ This control workflow is great for teams of few members as each conflict will ta
 
 ----
 
+Manual testing is as the name implies, done manually by a person rather than automatically running coded tests. This can be done by a dev or tester to verify features are working as intended in both a closed environment, and working between features that need to communicate. 
+
+A process can be laid out with a description of every step the user needs to take, the status of that function and expected vs actual result. The below is a manual test I made in a terminal application that took one lot of data, and ran it through various other functions to manipulate it.
+
+This was more effective than automatic tests to implement as my main concern was data integrity between functions and that none of the functions caused errors between uses, so by manually testing each of these functions and verifying it was working as intended manual testing is able to verify the functions are working as intended and potentialy identify what functions would not be working or passing the data correctly if new functions were added. 
+
+This same reasoning can be applied to many projects where data needs to be manipulated in various forms depending on the current need. As each function is designed, its interaction with other functions can be monitored in ways that are more complicated to write automatic tests for. 
+
+![](./resources/testing.jpg)
+
 ## Q6: Discuss and analyse requirements related to information system security and how they relate to the project
 
 ----
+
+ACME's database and website will will likely have sensitive information that should only be distributed to selected users, making this project in need of data protection & user authentication and permissions. 
+
+>>> Having suffered several cyber attacks in the past and resultant remedial audits ACME Corporation takes compliance, security and privacy very seriously. The following set of questions relate to this RfQ-requirement
+
+>>> Meets P with specific mention of requirements for this project, such as user authentication and protection of sensitive information
+
+>>>Meets CR with discussion of alternative options for information security and benefits/tradeoffs of each
+
+>>> Meets D with evidence that the best option for information security was chosen
+
+
+https://pythonhosted.org/Flask-Security/
+
+https://www.google.com/search?q=how+do+jwt+tokens+work&rlz=1C1CHBF_en-GBAU897AU897&oq=How+do+JWT+toke&aqs=chrome.0.0i512j69i57j0i22i30i625l8.3919j0j4&sourceid=chrome&ie=UTF-8
+
+https://dev.to/kcdchennai/how-jwt-json-web-token-authentication-works-21e7#:~:text=How%20it%20works%3F,and%20password%20or%20google%2Ffacebook.
+
+https://www.google.com/search?q=What+is+CRUD&rlz=1C1CHBF_en-GBAU897AU897&oq=What+is+CRUD&aqs=chrome..69i57j0i512l9.1777j0j7&sourceid=chrome&ie=UTF-8
 
 ## Q7: Discuss common methods of protecting information and data and how you would apply them to the project
 
