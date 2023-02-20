@@ -163,13 +163,104 @@ Flask-security also provides a lot of options to use (like flask_wtf above) that
 
 ## Q8: Research what your legal obligations are in relation to handling user data and how they can be met for the project
 
+In Australia we are required to uphold the requirements in the Privacy Act 1988 in regards to collection, use, storage & disclosure of personal information if you fit into a broad range of criteria (an extensive checklist can be found [here](https://www.oaic.gov.au/privacy/privacy-for-organisations/small-business#PrivacyChecklistForSmallBusiness). 
+
+Assuming we fit one of the criteria for these, we are required to follow the thirteen privacy principles:
+
+
+1. Be open and transparent with management of personal information.
+    * By providing a clear privacy policy, we can be transparent to users and staff about how we intend and enact the management of personal information. 
+    * Some websites have their privacy policy available for viewing if the user would look for it, however my opinion of the best practice for this APP is a pop-up before providing personal information for our privacy policy which gives the user a sense of security by showing we are putting the effort in to be transparent about how we would handle their data. 
+
+2. Provide anonymity & pseudonymity.
+    * If it is practical / applicable, we should provide users the ability to work with anonymity or pseudonyms with us. 
+    * One option is giving users the ability to be referred to by their email, but most of the time people have personal information such as their name and birth year in their email. In my opinion, a better alternative is giving users the ability to use a username instead of their First name or other identifying data meets this principle by giving them a pseudonym and keeping the least amount of data possible, or if we are keeping the information still limiting how much is shared with other users at an individuals discretion.  
+
+3. How we can collect solicited personal information:
+    * We should only solicit personal information that is neccessary for the function of our application or business.
+    * Only solicit sensitive information if the individual consents (with few exceptions which should be verified).
+    * With a clear business model and functions clearly understood, we can decide what information we absolutely need, what information would be useful but not neccessary and information that isn't neccessary and then give the users the ability to only provide as much information as neccessary, and provide the optional ability for more information to be submitted at the individuals discretion.
+
+4. How to deal with collected (unsolicited) personal information:
+    * If we are recieving unsolicited personal information that we could not have solicited, and is not contained in a commonwealth record we must destroy or de-identify this information as soon as possible.
+    * Any unsolicited information kept because it could have been collected under APP 3 or contained in a commonwealth record must be dealt with in accordance to the other APP's. 
+    * Writing clear guidelines about what information could be solicited similar to APP 3 above would give an understanding of what information could be solicited and therefore outline what information fits under this category in a clear and precise manner, making this APP much easier to follow routinely instead of treating these all as a case-by-case situation. This option saves more time and acts in an ethically consistent manner. 
+
+5. Notification of collection of personal information. 
+    * We must take reasonable steps to notify indivudals when we collect their information, our identity, the circumstances of collection and whether or not its authorized by law, its purpose & consequence if not collected and our disclosures such as privacy policy. 
+    * A blanket statement could be prepared to cover the gathering and usage of all information in a generic way to cover all bases which be a cheap and fast method to cover this APP, however my recommendation would be for the company to take a few seperate approaches to this: 
+    * By having prepared letters/emails when collecting from the user, having trained staff able to respond to any query's the user may have and having prepared notices to send if the collection is unsolicited are all showing integrity to deal with data and transparency in how we are prepared to handle it. Taking more measures here would show that we are prepared and capable to the user and increase confidency, and cover more bases for this APP.
+
+6. Use or disclosure of personal information:
+    * We may only use or disclose personal information for the purpose of which it was collected (with a few exceptions). 
+    * Relating back to APP 3 again, having a clear function for why we are collecting data would ensure we get the data that we need for our function and limit our use & disclosure of other data because it would be outside the scope. 
+    * The alternative to having the clear plan is having individual plans for each usage of personal data however these might not all fit under the primary purpose of collection and would need to be reviewed on a case-by-case basis which would take more time & resources and not be as effective, ethical or transparent. 
+
+7. Disclosing personal information for direct marketing. 
+    * We can only use personal information for direct marketing if the information is collected directly from the user and it is reasonable to expect their information to be used for direct marketing. 
+    * We also must allow the user to "opt-out" of this direct marketing and comply with that request. This could be done via email from the user to customer services, but automating it in a link with all marketing would be less constant work for staff and give the user more direct control over the usage of their personal information and therefore increase confidence in their data being managed by this company.
+
+8. Overseas disclosure of personal information. 
+    * We must (reasonably) ensure any information we disclose overseas recipient will not breach the APPs, and holds us accountable for their handling of the data.
+    * Whenever we disclose information to an external source we should 1) verify that it holds a purpose to the function of the business or to meet another requirement, and 2) vet the companies privacy policy to check they will appropriately handle the data we disclose. 
+
+9. Adoption or use of government related identifiers. 
+    * The company may not adopt use or disclose government identifiers unless a specific exception applies. 
+    * If an exception applies, this is considered personal information and must be dealt with extreme caution and intention. 
+
+10. Quality of personal information
+    * The company should take reasonable steps to maintain accurate, up to date and complete personal information (if it is to do with the function of the business). 
+    * The company could do this with routine emails reminding the user to update information where applicable. Another way to get this question in is regular checks at appropriate time-gaps when the user accesses a service, prompting them with "are these details correct", that way it isn't "out of the way" for the user by prompting when they are intending on accessing the service anyway.
+        * A good example of this is when going to the doctors, they will usually ask to verify your perosnal information is up to date. Since you're already there, you're more likely to update it than if you were prompted with an email at a potentially inconvenient time. 
+
+11. Security of personal information
+    * We must take reasonable steps to protect personal information from misuse, interference & loss, unauthorized access, modification and disclosure.
+    * This can be assisted with Flask-Security, JWT-tokens and a range of other methods to protect unauthorized access to data, or unauthorized modification of existing data (with the same information from Q6 & 7).  
+
+12. Access to personal information
+    * If we hold personal information about an individual, we must be able to give access to that information on request.
+    * This could be arranged on a website with a role for users to be able to access their own information which exludes them from accessing others information to suit APP 11 & 12, and giving them the ability to modify this information for APP 10. 
+
+13. Correction of personal information
+    * We must take reasonable steps to correct personal information to ensure that the data is accurate, complete, relevant and not misleading.
+    * This can be met by providing users with the ability to update the information themselves, as we are required to at their request. Any updates made should be provided if that information was sent to another APP entity automatically to reduce workload and comply with APP 13. 
+    * If suitable, have dedicated staff available to assist users who may have their requestsrefused as a reason for refusal must be provided, and the staff could facilitate the collection of correct information in a timely manner. 
+
+
 ----
 
 ## Q9: Describe the structural aspects of the relational database model. Your description should include information about the structure in which data is stored and how relations are represented in that structure.
 
+ Databases before relational database models in the past were hard to use, maintain and edit, required a lot of developer knowledge and suffered poor performance creating the need for a better database system, which is where relationship database models (such as SQL) came in. Relational database models strengths lay in its use of tables in an intuitive efficient and flexible manner to store, access and edit structured information.<sup>(7)</sup>
+
+ These tables can be used to represent relations in numerous forms that is easiest to express with an example, and I will use a dog walking business as an example. 
+
+In the dog walking business we have a few entities (objects) that we want to store information for. For us, this could be the employee, the customers and the pets. Each entity then has attributes which is all the stored information about the entity. One of these attributes needs to be a primary key, unique to each individual case of the entity. This is usually a serial id number.
+
+For our employee, the attributes could be: employee_id, name, email, phone, pay_rate, location. 
+For the pets: pet_id, pet_name, owner_id, employee_id, breed.
+Finally the customers: customer_id, name, phone, email, location, pet_id.
+
+This is what the entity-relationship diagram looks like below. 
+![](./resources/entity_rel.png) 
+
+To further describe the relationships between each of these attributes, we can determine for example that each customer may have multiple pets to take for walks, so customer to pet_id is a one-to-many relationship. 
+
+Other relationships that could hypothetically happen are many-to-many, you could assign a relationship for many employees to be walking many pets within their employment. Another way of handling this is making a seperate table for each instance, also with a unique id. In this business, we will track "walks" like an invoice, it tracks the foreign keys employee_id, pet_id, customer_id, walk_date, walk_length & cost. 
+
+This way instead of creating multiple many-to-many relationships, we have simplified this to one-to-many relationships per walk, and kept track of all the walks that have happened instead. The relationship shown between pet_id foreign key in customers and pet_id primary key is one-to-one-or-many. Here it means each customer must have a pet, but they could also have many (more than one) pets.
+
+![](./resources/db_model.png)
+
+SQL allows the linkage between these tables using these foreign keys which can then be used to retrieve information in joined tables, for example, if you wanted to send an email about all the pets that were talked on a day, you could find all the customer_id's that correlated to walks on walk_date, and join the email section to get a list. 
+
+
 ----
 
 ## Q10: Describe the integrity aspects of the relational database model. Your description should include information about the types of data integrity and how they can be enforced in a relational database.
+
+
+
 
 ----
 
@@ -197,4 +288,6 @@ Flask-security also provides a lot of options to use (like flask_wtf above) that
 (2) https://www.postgresql.org/about/ <br>
 (3) https://www.atlassian.com/git/tutorials/comparing-workflows <br>
 (4) https://flask-security-too.readthedocs.io/en/stable/ <br>
-(5) https://jwt.io/introduction
+(5) https://jwt.io/introduction <br>
+(6) https://www.oaic.gov.au/privacy/australian-privacy-principles/australian-privacy-principles-quick-reference <br>
+(7) https://www.oracle.com/au/database/what-is-a-relational-database/#:~:text=The%20relational%20model%20means%20that,data%20as%20a%20logical%20structure.
