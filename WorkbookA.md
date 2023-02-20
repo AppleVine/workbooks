@@ -259,8 +259,35 @@ SQL allows the linkage between these tables using these foreign keys which can t
 
 ## Q10: Describe the integrity aspects of the relational database model. Your description should include information about the types of data integrity and how they can be enforced in a relational database.
 
+Integrity is the concept of enforcing a set of rules on a database to ensure the data is consistent & accurate. This plays an important role in keeping databases robust, efficient and able to perform tasks to meet the demand of the developers/stakeholders.
+
+Integrity constraints are used to ensure data follows the intended rules when entered to prevent errors/inconsistencies, or even just to follow the rules of the business. For example, a bank would disallow a customer from withdrawing more funds than what they have in their account, even if a database can process a negative number. 
+
+These constraints are easy for users and devs to use and descriptive when mistakes have been made which makes it easy to mend input mistakes and on the spot as the checks are done automatically. The rules are easy to implement from a developer point of view, and can be repeated across the entire database.
 
 
+These are the four main types of integrity constraints:
+
+----
+
+### Domain constraints:
+
+A domain constraint restricts the values that can be entered to a valid number. In the bank example, having a limit between 0 and 10 billion would only allow an account to have funds between that range, and less and it would prevent withdrawing, and anymore would prevent depositing. Only valid data is able to be entered into the database. 
+
+You can also specify whether or not you're able to hold a null value. For example, a banking customer must provide their name, date of birth and address for identity security. Using ```NOT NULL``` would force you to enter these details before you're able to set up an account. 
+
+You may also specify whether the value has to be unique (the customers id number, for example), data type (a valid date of birth in case of a mistype), and a default value (having the default option for "signed up for promos" as NO.) 
+----
+
+### Entity Integrity Constraint:
+
+Each record (row) in a table must be unique in some manner, which is usually ensured with a unique primary key. In most cases this will be a serial ID number (e.g. client ID number for a bank). If the primary key is not unique, the database should throw an error. This ensures retrieval of information in the database is accurate and not ambiguous.
+
+----
+
+### Referential Integrity Constraint & Key constraints
+
+The relationship between one table and another is linked via a foreign key to (usually) a primary key of another table. This constraint checks to make sure there is a valid value in the corropsonding column of the other table. Unique keys are another constraint that means the value must be unique. In the bank example, a bank account would need to be unique, even if it is attached to a person with a unique id, sending money to other accounts needs to be precise (although this example may be faulty as bank accounts would likely have their own table, the idea persists).  
 
 ----
 
@@ -291,3 +318,4 @@ SQL allows the linkage between these tables using these foreign keys which can t
 (5) https://jwt.io/introduction <br>
 (6) https://www.oaic.gov.au/privacy/australian-privacy-principles/australian-privacy-principles-quick-reference <br>
 (7) https://www.oracle.com/au/database/what-is-a-relational-database/#:~:text=The%20relational%20model%20means%20that,data%20as%20a%20logical%20structure.
+(8) https://www.knowledgehut.com/blog/database/integrity-constraints-in-dbms
