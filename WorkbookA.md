@@ -333,12 +333,41 @@ These commands take setup through modules beforehand, but give users the ability
 
 
 ## Q12: Conduct research into a web application (app) and answer the following parts:
-  a. List and describe the software used by the app.
+
+The web application I have chosen is Doordash, a food delivery service. 
+
+----
+
+ ### a. List and describe the software used by the app.
+
+Doordash has a moderately complex tech-stack (found on [stackshare](https://stackshare.io/doordash/doordash)).
+
+Doordash uses Javascript for dynamic & interactive webpage applications and browsers. Features like the menu, photo effects for items, animations etc. Doordash has put an ongoing effort to transforming their  Javascript to be [isomorphic](https://doordash.engineering/2022/12/06/five-challenges-to-building-an-isomorphic-javascript-library/#:~:text=Developers%20at%20DoorDash%20write%20code,run%20in%20is%20increasingly%20blurry.) -- i.e. it can run in any environment or web browser to imrove productivity and efficiency. 
+
+The back-end was made in python & Django, however later broke apart systems of code to be upgraded and transferred to [**Kotlin**](https://doordash.engineering/2021/05/04/migrating-from-python-to-kotlin-for-our-backend-services/) for better ability to grow their systems, and up-to-date security that python-2 and Django no longer supported. 
+
+[Stripe](https://doordash.engineering/2021/10/05/eight-things-we-learned-from-implementing-payments-in-the-doordash-android-app/) is used as a payment gateway to encrypt information during a transaction. This was taken on board along with other payment methods to enable the user to have the most choices possible.  
+
+[Redis](https://doordash.engineering/2021/06/03/building-chat-into-the-doordash-app/) temporarily storing data as a cache layer for user info & channel status, then **SendBird** stores the chat on its platform ensuring security and privacy. The SendBird UI SDK is used as a framework for adding UI styling for both employees and customers with seperate apps.  
+
+----
+
+
   b. Describe the hardware used to host the app.
+
+
   c. Describe the interaction of technologies within the app
+
+
   d. Describe the way data is structured within the app
+
+
   e. Identify entities which must be tracked by the app
+
+  
   f. Identify the relationships and associations between the entities you have identified in part (e)
+
+
   g. Design a schema using an Entity Relationship Diagram (ERD) appropriate for the database of this website (assuming a relational database model)
 
 ----
