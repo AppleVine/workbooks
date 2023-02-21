@@ -277,6 +277,7 @@ A domain constraint restricts the values that can be entered to a valid number. 
 You can also specify whether or not you're able to hold a null value. For example, a banking customer must provide their name, date of birth and address for identity security. Using ```NOT NULL``` would force you to enter these details before you're able to set up an account. 
 
 You may also specify whether the value has to be unique (the customers id number, for example), data type (a valid date of birth in case of a mistype), and a default value (having the default option for "signed up for promos" as NO.) 
+
 ----
 
 ### Entity Integrity Constraint:
@@ -293,7 +294,43 @@ The relationship between one table and another is linked via a foreign key to (u
 
 ## Q11: Describe the manipulative aspects of the relational database model. Your description should include information about the ways in which data is manipulated (added, removed, changed, and retrieved) in a relational database.
 
+Data in a relational database model can be manipulated with Data Manipulation Language (DML), with the main ideas being create, read, update and delete (a.k.a CRUD), however, wording can change between DBMS's, (e.g. insert, select, update and delete). Most of the names implies already what they can do, however the specifics are:
+
+Create/Insert:
+* Allows you to create new data; a new table or record.
+
+Select/Read:
+* Returns records or items based off your search criteria, which may result in multiple records.
+* Commands such as: 
+    * SELECT column1, column2, column3
+    * FROM table_name
+* Will show the first 3 columns of table_name.
+    * Select *
+    * FROM table_name
+* Will show all records from table_name. You can also use the WHERE clause to find specific data you are looking for. E.g. if I wanted to find "John"'s employee ID number at my bank, I could search for this by specifying what columns I am looking for, what table I'm looking from, and what parameter I am searching by:
+    * SELECT EMPLOYEE_ID, NAME
+    * FROM EMPLOYEES
+    * WHERE NAME = 'John'
+
+Update:
+* Modify existing records based on similar search terms to read/select -- you can be specific about the records to update by using terms in search such as the WHERE clause. 
+
+Delete:
+* Remove records from the database. This can be modified between a 'hard' delete to remove the record permanently, or a 'soft' delete which flags the record but doesn't remove it for maintaining documentation. 
+
+Alter:
+* Used to add, delete or update the attributes of tables in the database. 
+
 ----
+
+This can be done in the terminal directly using the DBMS language, or, you can do this through Flask & Python which will translate to the DBMS language for you. For example, every time a user registers to your website the user will fill out a form completing all the information needed to go into the database, and will be inserted as a new record. For example, through SQLAlchemy, through an instance of SQLAlchemy (e.g. db) you can retrieve the JSON information and db.session.add(user) to add a record of the user to your database. 
+
+These commands take setup through modules beforehand, but give users the ability to modify tables (with permission if required), insert and potentially delete or update existing records should they be given the means. 
+
+----
+
+
+
 
 ## Q12: Conduct research into a web application (app) and answer the following parts:
   a. List and describe the software used by the app.
