@@ -334,43 +334,61 @@ These commands take setup through modules beforehand, but give users the ability
 
 ## Q12: Conduct research into a web application (app) and answer the following parts:
 
-The web application I have chosen is Doordash, a food delivery service. 
+My chosen web application is spotify -- a music, podcast & video streaming service. 
 
 ----
 
  ### a. List and describe the software used by the app.
 
-Doordash has a moderately complex tech-stack (found on [stackshare](https://stackshare.io/doordash/doordash)).
+Spotify uses [Python](https://engineering.atspotify.com/2013/03/how-we-use-python-at-spotify/) to program their backend services & data analysis which are connected by ZeroMQ. While the majority of the backend is written in Python, Java, C or C++ are also used. For Data analysis, Python interacts with Hadoop using Luigi packages to build batch jobs and bring errors logs to a local machine, allowing the dev to build and debug complex jobs quickly. 
 
-Doordash uses Javascript for dynamic & interactive webpage applications and browsers. Features like the menu, photo effects for items, animations etc. Doordash has put an ongoing effort to transforming their  Javascript to be [isomorphic](https://doordash.engineering/2022/12/06/five-challenges-to-building-an-isomorphic-javascript-library/#:~:text=Developers%20at%20DoorDash%20write%20code,run%20in%20is%20increasingly%20blurry.) -- i.e. it can run in any environment or web browser to imrove productivity and efficiency. 
+With the majority of Spotify written in python, you'll be able to see how this fits into their various functions for users; signing up or loggin in when you first enter the website, creating a library, searching for individual songs or updating your own information. Python is [confirmed to be used](https://engineering.atspotify.com/2013/02/in-praise-of-boring-technology/#:~:text=Historically%2C%20Spotify%20has%20been%20a,persistent%20storage%20%E2%80%93%20when%20it%20works.) for DNS resolvers for clients, and for using the psycopg2 library in python to interact with PostgreSQL using python scripts. An example of this could be a user updating their contact information, the commands written in python would then be translated for SQL to update the database.
 
-The back-end was made in python & Django, however later broke apart systems of code to be upgraded and transferred to [**Kotlin**](https://doordash.engineering/2021/05/04/migrating-from-python-to-kotlin-for-our-backend-services/) for better ability to grow their systems, and up-to-date security that python-2 and Django no longer supported. 
+Spotify features and services use [Cassandra and PostgreSQL](https://engineering.atspotify.com/2013/03/backend-infrastructure-at-spotify/#:~:text=The%20Spotify%20infrastructure%20offers%20a,%3A%20Cassandra%2C%20PostgreSQL%20and%20memcached.) to replicate their data between sites. Cassandra (or Apache Cassandra), along with other "no proprietary" software is great to use as it can be modified to the specific uses Spotify needs it for. In the transition from PostgreSQL, [Spotify has found for its purposes](https://engineering.atspotify.com/2013/02/in-praise-of-boring-technology/#:~:text=Historically%2C%20Spotify%20has%20been%20a,persistent%20storage%20%E2%80%93%20when%20it%20works.) Cassandra has better replication, behaves better during networking issues and in certain failure cases. 
 
-[Stripe](https://doordash.engineering/2021/10/05/eight-things-we-learned-from-implementing-payments-in-the-doordash-android-app/) is used as a payment gateway to encrypt information during a transaction. This was taken on board along with other payment methods to enable the user to have the most choices possible.  
+When a user tries to acces a HTTP service, they are directed to an NGINX server for load balancing and [split requests in different ways](https://engineering.atspotify.com/2015/10/designing-the-spotify-perimeter/#:~:text=First%2C%20nginx%20supports%20geolocation%20via,nginx%20supports%20file%2Dbased%20logging.). For example, generic requests for standard websites are sent to only two servers in Eurpose and West Coast, US. API endpoints and requests from the application/clients are handled in every datacenter due to the greater need for logic, and need for fast response.  
 
-[Redis](https://doordash.engineering/2021/06/03/building-chat-into-the-doordash-app/) temporarily storing data as a cache layer for user info & channel status, then **SendBird** stores the chat on its platform ensuring security and privacy. The SendBird UI SDK is used as a framework for adding UI styling for both employees and customers with seperate apps.  
+[Hadoop, Kafka and Elastic](https://engineering.atspotify.com/2015/10/designing-the-spotify-perimeter/#:~:text=First%2C%20nginx%20supports%20geolocation%20via,nginx%20supports%20file%2Dbased%20logging.) search are all used to create clusters -- groups of servers which are used to track logs from Load balancers and audit trails from Squid. This provides visualization of incoming HTTP requests across the 'perimeter', which support Health check features and automatic removal/rotation of servers from NGINX along with storing valuble data. 
 
-----
+[Apache storm](https://engineering.atspotify.com/2015/01/how-spotify-scales-apache-storm/) is used for functions like ad targeting, music recommendations & data visualizations using Kafka and Cassandra as its sources. It uses very little resources, and can be made with easy-to-read and use code, making its scalability a massively desired quality. 
 
-
-  b. Describe the hardware used to host the app.
-
-
-  c. Describe the interaction of technologies within the app
-
-
-  d. Describe the way data is structured within the app
-
-
-  e. Identify entities which must be tracked by the app
-
-  
-  f. Identify the relationships and associations between the entities you have identified in part (e)
-
-
-  g. Design a schema using an Entity Relationship Diagram (ERD) appropriate for the database of this website (assuming a relational database model)
+Each website is made using puppet as it has simple syntax and can be created with two lines, which are then tested and reviewed. The websites are then usually built with CSS, HTML, Javascript and in Spotifies case uses Boostrap to provide tools and reduce maintaince for web development languages. It greatly assists in responsive design helping the web application to be available for phones, tablets and desktops. 
 
 ----
+ ### b. Describe the hardware used to host the app.
+
+Spotify originally managed its data centers through Amazon Web Services (AWS) as it offered dynamic storage options, storage lifecycle management and utilization advice as Spotify would keep gaining access to more licensed songs. Previously it hosted all it's infrastructure on AWS as well, however in recent years it has been moving to Google Cloud servers for this as it leads in efficiency and effectivenes. Google also has options for leasing ["datacentre space, server hardware & networking gear as close to customers as possible"](https://www.zdnet.com/article/spotify-to-switch-from-aws-to-google-cloud/).
+
+
+
+
+Spotify uses a combination of Amazon Web Services (Cloudfront, S3) and Google Cloud
+
+
+
+----
+ ### c. Describe the interaction of technologies within the app
+
+
+
+----
+ ### d. Describe the way data is structured within the app
+
+
+
+----
+ ### e. Identify entities which must be tracked by the app
+
+
+
+----
+ ### f. Identify the relationships and associations between the entities you have identified in part (e)
+
+
+
+----
+ ### g. Design a schema using an Entity Relationship Diagram (ERD) appropriate for the database of this website (assuming a relational database model)
+
 
 
 ----
