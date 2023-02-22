@@ -357,18 +357,27 @@ Each website is made using puppet as it has simple syntax and can be created wit
 ----
  ### b. Describe the hardware used to host the app.
 
-Spotify originally managed its data centers through Amazon Web Services (AWS) as it offered dynamic storage options, storage lifecycle management and utilization advice as Spotify would keep gaining access to more licensed songs. Previously it hosted all it's infrastructure on AWS as well, however in recent years it has been moving to Google Cloud servers for this as it leads in efficiency and effectivenes. Google also has options for leasing ["datacentre space, server hardware & networking gear as close to customers as possible"](https://www.zdnet.com/article/spotify-to-switch-from-aws-to-google-cloud/).
+Spotify originally managed its own data centers, in early years having 4 data centers around the world, each running its own service and managed by the responsible party of that service. 
+
+Shortly after, Spotify began working through Amazon Web Services (AWS) as it offered dynamic storage options, storage lifecycle management and utilization advice as Spotify would keep gaining access to more licensed songs. 
+
+In recent years it has been moving to Google Cloud servers for this as it leads in efficiency and effectivenes. Google also has options for leasing ["datacentre space, server hardware & networking gear as close to customers as possible"](https://www.zdnet.com/article/spotify-to-switch-from-aws-to-google-cloud/).
 
 
+This changeover to Google Cloud Platform (GCP) Google also offered a way for Spotify developers to gain easy access to computing capacity without interefering with other teams. 
+
+Now Spotify uses the combination of Google Cloud Platform, Amazon Web Services *and* it's own 
 
 
-Spotify uses a combination of Amazon Web Services (Cloudfront, S3) and Google Cloud
-
-
+https://www.techrepublic.com/article/switching-clouds-what-spotify-learned-when-it-swapped-aws-for-googles-cloud/
+https://support.spotify.com/us/article/understanding-my-data/
+https://bigdatabigbrotherbigboon.wordpress.com/2016/11/28/big-data-spotify/
+https://engineering.atspotify.com/2016/03/managing-machines-at-spotify/
+https://cloud.google.com/blog/products/gcp/spotify-chooses-google-cloud-platform-to-power-data-infrastructure/
+https://www.forbes.com/sites/alexkonrad/2016/02/29/why-spotify-really-chose-google-cloud/?sh=7e9d4bb73ee4
 
 ----
  ### c. Describe the interaction of technologies within the app
-
 
 
 ----
