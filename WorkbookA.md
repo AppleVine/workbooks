@@ -338,7 +338,7 @@ My chosen web application is spotify -- a music, podcast & video streaming servi
 
 ----
 
- ### a. List and describe the software used by the app.
+### a. List and describe the software used by the app.
 
 Spotify uses [Python](https://engineering.atspotify.com/2013/03/how-we-use-python-at-spotify/) to program their backend services & data analysis which are connected by ZeroMQ. While the majority of the backend is written in Python, Java, C or C++ are also used. For Data analysis, Python interacts with Hadoop using Luigi packages to build batch jobs and bring errors logs to a local machine, allowing the dev to build and debug complex jobs quickly. 
 
@@ -355,50 +355,65 @@ When a user tries to acces a HTTP service, they are directed to an NGINX server 
 Each website is made using puppet as it has simple syntax and can be created with two lines, which are then tested and reviewed. The websites are then usually built with CSS, HTML, Javascript and in Spotifies case uses Boostrap to provide tools and reduce maintaince for web development languages. It greatly assists in responsive design helping the web application to be available for phones, tablets and desktops. 
 
 ----
- ### b. Describe the hardware used to host the app.
+
+### b. Describe the hardware used to host the app.
 
 Spotify originally managed its own data centers, in early years having 4 data centers around the world, each running its own service and managed by the responsible party of that service. 
 
 Shortly after, Spotify began working through Amazon Web Services (AWS) as it offered dynamic storage options, storage lifecycle management and utilization advice as Spotify would keep gaining access to more licensed songs. 
 
-In recent years it has been moving to Google Cloud servers for this as it leads in efficiency and effectivenes. Google also has options for leasing ["datacentre space, server hardware & networking gear as close to customers as possible"](https://www.zdnet.com/article/spotify-to-switch-from-aws-to-google-cloud/).
+In recent years it has been moving to Google Cloud servers for this as it leads in efficiency and effectivenes. Google also has options for leasing ["datacentre space, server hardware & networking gear as close to customers as possible"](https://www.zdnet.com/article/spotify-to-switch-from-aws-to-google-cloud/). This changeover to Google Cloud Platform (GCP) Google also offered a way for Spotify developers to gain easy access to computing capacity without interefering with other teams. 
 
-
-This changeover to Google Cloud Platform (GCP) Google also offered a way for Spotify developers to gain easy access to computing capacity without interefering with other teams. 
-
-Now Spotify uses the combination of Google Cloud Platform, Amazon Web Services *and* it's own 
-
-
-https://www.techrepublic.com/article/switching-clouds-what-spotify-learned-when-it-swapped-aws-for-googles-cloud/
-https://support.spotify.com/us/article/understanding-my-data/
-https://bigdatabigbrotherbigboon.wordpress.com/2016/11/28/big-data-spotify/
-https://engineering.atspotify.com/2016/03/managing-machines-at-spotify/
-https://cloud.google.com/blog/products/gcp/spotify-chooses-google-cloud-platform-to-power-data-infrastructure/
-https://www.forbes.com/sites/alexkonrad/2016/02/29/why-spotify-really-chose-google-cloud/?sh=7e9d4bb73ee4
+Now Spotify uses the combination of Google Cloud Platform to host its backend logic, Amazon Web Services to take the responsibility for holding their licensed songs and the dynamic growth that entails, *and* it's own servers to handle requests for computing capacity through [Sid](https://engineering.atspotify.com/2016/03/managing-machines-at-spotify/), which manages machine invetory data and allows squads to manage services capacity. 
 
 ----
- ### c. Describe the interaction of technologies within the app
 
+### c. Describe the interaction of technologies within the app
 
-----
- ### d. Describe the way data is structured within the app
+For an example user, when they open the web application they will see the interaction of ```HTML```, ```CSS``` & ```Javascript``` for the viewable content of the webpage. ```HTML``` is used to determine the content & structure of the page, ```CSS``` is then used to determine how the ```HTML``` is portrayed; colour, layout, font, shape etc. ```Javascript``` adds a layer over the ```HTML``` & ```CSS``` to make the webpage dynamic and interactive, making animations, updating the webpage etc.
 
+This webpage then creates an environment where the user can input data into the website, then a POST request is sent to the ```API```. The servers backend (in spotify's case, ~80% of the time this is done with ```Python```) will act based on the logic of the site. In an example of creating a user, it'll take the ```JSON``` values given and runs them through a ```Python``` script with ```PostgreSQL``` imported in order to let Python INSERT this data into the ```SQL``` database, selecting the correct values from the JSON into the columns for SQL. 
 
-
-----
- ### e. Identify entities which must be tracked by the app
-
-
+If said user then wanted to update their information, when the POST request is made, now the database would want to compare the users ```token``` to either a token stored on the database OR a check to see whether it's valid, depending on their method of token creation & retrieval. This verifies the person making the request has the permission to UPDATE data in the SQL database, and in a similar sequence this data will now be UPDATE(d). Similarly to a POST request, when the user wants to load their information, they will be using a GET request, and their ```token``` would need to be verified to get this sensitive information. 
 
 ----
- ### f. Identify the relationships and associations between the entities you have identified in part (e)
 
+### d. Describe the way data is structured within the app
 
+Throughout their history, spotify has used [PostgreSQL](https://engineering.atspotify.com/2013/02/in-praise-of-boring-technology/#:~:text=Historically%2C%20Spotify%20has%20been%20a,example%20of%20highly%20mature%20technology.) for their database, as it is a mature object-relational database (with other repeating information from Question 2 & 9). 
+
+Later spotify transitioned to using Cassandra as it is more 'lightweight' than PostgreSQL and able to handle the heavy server load when PostgreSQL was beginning to suffer with performance. 
+
+This transition lead to better scalability, however data is not structured in a way that makes logical sense in the same tabular way relational databases, but instead what makes sense for the data storage; whether that is key:value pairs, document storing [for strings and object data value] or columnar data stores. This allows for much more data storage and flexibility in huge sets of data meeting Spotify's needs.
 
 ----
- ### g. Design a schema using an Entity Relationship Diagram (ERD) appropriate for the database of this website (assuming a relational database model)
+
+### e. Identify entities which must be tracked by the app
+
+*[Note: I will answer question e, f, and g based on the historical use of PostgreSQL as that has been focused on more in this Request for Quotation and suits the questions & use better.]*
 
 
+The app would need to track the following entities, each with multiple attributes:
+
+Artist, Collaborators, Album, Song, Podcast, User, Playlist, Record label (company), Library,
+
+----
+
+### f. Identify the relationships and associations between the entities you have identified in part (e)
+
+Each user of the website may (and 99.99% of the time will) have a Library. Each library may contain multiple playlists, podcasts, audiobooks, artists & albums.
+* Each playlist has one or multiple songs, and/or one or multiple albums. 
+    * Each song has an artist, *may* have an album_id, has a record label, and may have a list of artists in a collaboration. 
+* Each podcast has an artist ID, linked to the artist table.
+* Each audiobook has an artist. 
+* Each Album has a list of songs, has an artist, has a record label and may have a list of collaborators. 
+    * A collaboration list has a list of artists who participated in the creation of a song or album. 
+
+----
+
+### g. Design a schema using an Entity Relationship Diagram (ERD) appropriate for the database of this website (assuming a relational database model)
+
+![](./resources/spotify_png.png)
 
 ----
 
@@ -410,5 +425,5 @@ https://www.forbes.com/sites/alexkonrad/2016/02/29/why-spotify-really-chose-goog
 (4) https://flask-security-too.readthedocs.io/en/stable/ <br>
 (5) https://jwt.io/introduction <br>
 (6) https://www.oaic.gov.au/privacy/australian-privacy-principles/australian-privacy-principles-quick-reference <br>
-(7) https://www.oracle.com/au/database/what-is-a-relational-database/#:~:text=The%20relational%20model%20means%20that,data%20as%20a%20logical%20structure.
+(7) https://www.oracle.com/au/database/what-is-a-relational-database/#:~:text=The%20relational%20model%20means%20that,data%20as%20a%20logical%20structure. <br>
 (8) https://www.knowledgehut.com/blog/database/integrity-constraints-in-dbms
