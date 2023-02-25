@@ -163,7 +163,7 @@ Flask-security also provides a lot of options to use (like flask_wtf above) that
 
 ## Q8: Research what your legal obligations are in relation to handling user data and how they can be met for the project
 
-In Australia we are required to uphold the requirements in the Privacy Act 1988 in regards to collection, use, storage & disclosure of personal information if you fit into a broad range of criteria (an extensive checklist can be found [here](https://www.oaic.gov.au/privacy/privacy-for-organisations/small-business#PrivacyChecklistForSmallBusiness). 
+In Australia we are required to uphold the requirements in the Privacy Act 1988 in regards to collection, use, storage & disclosure of personal information if you fit into a broad range of criteria (an extensive checklist can be found [here](https://www.oaic.gov.au/privacy/privacy-for-organisations/small-business#PrivacyChecklistForSmallBusiness). <sup>9
 
 Assuming we fit one of the criteria for these, we are required to follow the thirteen privacy principles:
 
@@ -340,17 +340,17 @@ My chosen web application is spotify -- a music, podcast & video streaming servi
 
 ### a. List and describe the software used by the app.
 
-Spotify uses [Python](https://engineering.atspotify.com/2013/03/how-we-use-python-at-spotify/) to program their backend services & data analysis which are connected by ZeroMQ. While the majority of the backend is written in Python, Java, C or C++ are also used. For Data analysis, Python interacts with Hadoop using Luigi packages to build batch jobs and bring errors logs to a local machine, allowing the dev to build and debug complex jobs quickly. 
+Spotify uses [Python](https://engineering.atspotify.com/2013/03/how-we-use-python-at-spotify/) <sup>10</sup> to program their backend services & data analysis which are connected by ZeroMQ. While the majority of the backend is written in Python, Java, C or C++ are also used. For Data analysis, Python interacts with Hadoop using Luigi packages to build batch jobs and bring errors logs to a local machine, allowing the dev to build and debug complex jobs quickly. 
 
-With the majority of Spotify written in python, you'll be able to see how this fits into their various functions for users; signing up or loggin in when you first enter the website, creating a library, searching for individual songs or updating your own information. Python is [confirmed to be used](https://engineering.atspotify.com/2013/02/in-praise-of-boring-technology/#:~:text=Historically%2C%20Spotify%20has%20been%20a,persistent%20storage%20%E2%80%93%20when%20it%20works.) for DNS resolvers for clients, and for using the psycopg2 library in python to interact with PostgreSQL using python scripts. An example of this could be a user updating their contact information, the commands written in python would then be translated for SQL to update the database.
+With the majority of Spotify written in python, you'll be able to see how this fits into their various functions for users; signing up or loggin in when you first enter the website, creating a library, searching for individual songs or updating your own information. Python is [confirmed to be used](https://engineering.atspotify.com/2013/02/in-praise-of-boring-technology/#:~:text=Historically%2C%20Spotify%20has%20been%20a,persistent%20storage%20%E2%80%93%20when%20it%20works.)<sup>11</sup> for DNS resolvers for clients, and for using the psycopg2 library in python to interact with PostgreSQL using python scripts. An example of this could be a user updating their contact information, the commands written in python would then be translated for SQL to update the database.
 
-Spotify features and services use [Cassandra and PostgreSQL](https://engineering.atspotify.com/2013/03/backend-infrastructure-at-spotify/#:~:text=The%20Spotify%20infrastructure%20offers%20a,%3A%20Cassandra%2C%20PostgreSQL%20and%20memcached.) to replicate their data between sites. Cassandra (or Apache Cassandra), along with other "no proprietary" software is great to use as it can be modified to the specific uses Spotify needs it for. In the transition from PostgreSQL, [Spotify has found for its purposes](https://engineering.atspotify.com/2013/02/in-praise-of-boring-technology/#:~:text=Historically%2C%20Spotify%20has%20been%20a,persistent%20storage%20%E2%80%93%20when%20it%20works.) Cassandra has better replication, behaves better during networking issues and in certain failure cases. 
+Spotify features and services use [Cassandra and PostgreSQL](https://engineering.atspotify.com/2013/03/backend-infrastructure-at-spotify/#:~:text=The%20Spotify%20infrastructure%20offers%20a,%3A%20Cassandra%2C%20PostgreSQL%20and%20memcached.)<sup>12</sup> to replicate their data between sites. Cassandra (or Apache Cassandra), along with other "no proprietary" software is great to use as it can be modified to the specific uses Spotify needs it for. In the transition from PostgreSQL, [Spotify has found for its purposes](https://engineering.atspotify.com/2013/02/in-praise-of-boring-technology/#:~:text=Historically%2C%20Spotify%20has%20been%20a,persistent%20storage%20%E2%80%93%20when%20it%20works.)<sup>13</sup> Cassandra has better replication, behaves better during networking issues and in certain failure cases. 
 
-When a user tries to acces a HTTP service, they are directed to an NGINX server for load balancing and [split requests in different ways](https://engineering.atspotify.com/2015/10/designing-the-spotify-perimeter/#:~:text=First%2C%20nginx%20supports%20geolocation%20via,nginx%20supports%20file%2Dbased%20logging.). For example, generic requests for standard websites are sent to only two servers in Eurpose and West Coast, US. API endpoints and requests from the application/clients are handled in every datacenter due to the greater need for logic, and need for fast response.  
+When a user tries to acces a HTTP service, they are directed to an NGINX server for load balancing and [split requests in different ways](https://engineering.atspotify.com/2015/10/designing-the-spotify-perimeter/#:~:text=First%2C%20nginx%20supports%20geolocation%20via,nginx%20supports%20file%2Dbased%20logging.)<sup>14</sup>. For example, generic requests for standard websites are sent to only two servers in Eurpose and West Coast, US. API endpoints and requests from the application/clients are handled in every datacenter due to the greater need for logic, and need for fast response.  
 
-[Hadoop, Kafka and Elastic](https://engineering.atspotify.com/2015/10/designing-the-spotify-perimeter/#:~:text=First%2C%20nginx%20supports%20geolocation%20via,nginx%20supports%20file%2Dbased%20logging.) search are all used to create clusters -- groups of servers which are used to track logs from Load balancers and audit trails from Squid. This provides visualization of incoming HTTP requests across the 'perimeter', which support Health check features and automatic removal/rotation of servers from NGINX along with storing valuble data. 
+[Hadoop, Kafka and Elastic](https://engineering.atspotify.com/2015/10/designing-the-spotify-perimeter/#:~:text=First%2C%20nginx%20supports%20geolocation%20via,nginx%20supports%20file%2Dbased%20logging.)<sup>15</sup> search are all used to create clusters -- groups of servers which are used to track logs from Load balancers and audit trails from Squid. This provides visualization of incoming HTTP requests across the 'perimeter', which support Health check features and automatic removal/rotation of servers from NGINX along with storing valuble data. 
 
-[Apache storm](https://engineering.atspotify.com/2015/01/how-spotify-scales-apache-storm/) is used for functions like ad targeting, music recommendations & data visualizations using Kafka and Cassandra as its sources. It uses very little resources, and can be made with easy-to-read and use code, making its scalability a massively desired quality. 
+[Apache storm](https://engineering.atspotify.com/2015/01/how-spotify-scales-apache-storm/)<sup>16</sup> is used for functions like ad targeting, music recommendations & data visualizations using Kafka and Cassandra as its sources. It uses very little resources, and can be made with easy-to-read and use code, making its scalability a massively desired quality. 
 
 Each website is made using puppet as it has simple syntax and can be created with two lines, which are then tested and reviewed. The websites are then usually built with CSS, HTML, Javascript and in Spotifies case uses Boostrap to provide tools and reduce maintaince for web development languages. It greatly assists in responsive design helping the web application to be available for phones, tablets and desktops. 
 
@@ -362,9 +362,9 @@ Spotify originally managed its own data centers, in early years having 4 data ce
 
 Shortly after, Spotify began working through Amazon Web Services (AWS) as it offered dynamic storage options, storage lifecycle management and utilization advice as Spotify would keep gaining access to more licensed songs. 
 
-In recent years it has been moving to Google Cloud servers for this as it leads in efficiency and effectivenes. Google also has options for leasing ["datacentre space, server hardware & networking gear as close to customers as possible"](https://www.zdnet.com/article/spotify-to-switch-from-aws-to-google-cloud/). This changeover to Google Cloud Platform (GCP) Google also offered a way for Spotify developers to gain easy access to computing capacity without interefering with other teams. 
+In recent years it has been moving to Google Cloud servers for this as it leads in efficiency and effectivenes. Google also has options for leasing ["datacentre space, server hardware & networking gear as close to customers as possible"](https://www.zdnet.com/article/spotify-to-switch-from-aws-to-google-cloud/)<sup>17</sup>. This changeover to Google Cloud Platform (GCP) Google also offered a way for Spotify developers to gain easy access to computing capacity without interefering with other teams. 
 
-Now Spotify uses the combination of Google Cloud Platform to host its backend logic, Amazon Web Services to take the responsibility for holding their licensed songs and the dynamic growth that entails, *and* it's own servers to handle requests for computing capacity through [Sid](https://engineering.atspotify.com/2016/03/managing-machines-at-spotify/), which manages machine invetory data and allows squads to manage services capacity. 
+Now Spotify uses the combination of Google Cloud Platform to host its backend logic, Amazon Web Services to take the responsibility for holding their licensed songs and the dynamic growth that entails, *and* it's own servers to handle requests for computing capacity through [Sid](https://engineering.atspotify.com/2016/03/managing-machines-at-spotify/)<sup>18</sup>, which manages machine invetory data and allows squads to manage services capacity. 
 
 ----
 
@@ -380,7 +380,7 @@ If said user then wanted to update their information, when the POST request is m
 
 ### d. Describe the way data is structured within the app
 
-Throughout their history, spotify has used [PostgreSQL](https://engineering.atspotify.com/2013/02/in-praise-of-boring-technology/#:~:text=Historically%2C%20Spotify%20has%20been%20a,example%20of%20highly%20mature%20technology.) for their database, as it is a mature object-relational database (with other repeating information from Question 2 & 9). 
+Throughout their history, spotify has used [PostgreSQL](https://engineering.atspotify.com/2013/02/in-praise-of-boring-technology/#:~:text=Historically%2C%20Spotify%20has%20been%20a,example%20of%20highly%20mature%20technology.)<sup>19</sup> for their database, as it is a mature object-relational database (with other repeating information from Question 2 & 9). 
 
 Later spotify transitioned to using Cassandra as it is more 'lightweight' than PostgreSQL and able to handle the heavy server load when PostgreSQL was beginning to suffer with performance. 
 
@@ -426,4 +426,15 @@ Each user of the website may (and 99.99% of the time will) have a Library. Each 
 (5) https://jwt.io/introduction <br>
 (6) https://www.oaic.gov.au/privacy/australian-privacy-principles/australian-privacy-principles-quick-reference <br>
 (7) https://www.oracle.com/au/database/what-is-a-relational-database/#:~:text=The%20relational%20model%20means%20that,data%20as%20a%20logical%20structure. <br>
-(8) https://www.knowledgehut.com/blog/database/integrity-constraints-in-dbms
+(8) https://www.knowledgehut.com/blog/database/integrity-constraints-in-dbms <br>
+(9) https://www.oaic.gov.au/privacy/privacy-for-organisations/small-business#PrivacyChecklistForSmallBusiness <br>
+(10) https://engineering.atspotify.com/2013/03/how-we-use-python-at-spotify/ <br>
+(11) https://engineering.atspotify.com/2013/02/in-praise-of-boring-technology/#:~:text=Historically%2C%20Spotify%20has%20been%20a,persistent%20storage%20%E2%80%93%20when%20it%20works. <br>
+(12) https://engineering.atspotify.com/2013/03/backend-infrastructure-at-spotify/#:~:text=The%20Spotify%20infrastructure%20offers%20a,%3A%20Cassandra%2C%20PostgreSQL%20and%20memcached. <br>
+(13) https://engineering.atspotify.com/2013/02/in-praise-of-boring-technology/#:~:text=Historically%2C%20Spotify%20has%20been%20a,persistent%20storage%20%E2%80%93%20when%20it%20works. <br>
+(14) https://engineering.atspotify.com/2015/10/designing-the-spotify-perimeter/#:~:text=First%2C%20nginx%20supports%20geolocation%20via,nginx%20supports%20file%2Dbased%20logging. <br>
+(15) https://engineering.atspotify.com/2015/10/designing-the-spotify-perimeter/#:~:text=First%2C%20nginx%20supports%20geolocation%20via,nginx%20supports%20file%2Dbased%20logging. <br>
+(16) https://engineering.atspotify.com/2015/01/how-spotify-scales-apache-storm/ <br>
+(17) https://www.zdnet.com/article/spotify-to-switch-from-aws-to-google-cloud/ <br>
+(18) https://engineering.atspotify.com/2016/03/managing-machines-at-spotify/ <br>
+(19) https://engineering.atspotify.com/2013/02/in-praise-of-boring-technology/#:~:text=Historically%2C%20Spotify%20has%20been%20a,example%20of%20highly%20mature%20technology. <br>
